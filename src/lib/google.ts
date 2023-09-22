@@ -9,14 +9,20 @@ export async function getGoogleOAuthToken() {
 
   auth.setCredentials({
     access_token:
-      "ya29.a0AWY7Ckm9ESQPpN7UE1wNGqfVHWk5pmOroQfYZ8BgEDgkp0Cy67wnKVz_wZ_RYrmezA8VSlPFXL_2ZEvtSMMBC59p1xl-j6fgFeZe_R4Ta1i-m3swqGt7p5P1W0oQBcARh9mtpHZ6BPxxUQzJl0X8jqTKKYxcaCgYKAYkSARISFQG1tDrpplciP2L2Fn2ncdpjy3pu_A0163",
+      "ya29.a0AWY7CkkKmlMjzM_uJ9l4IC9qn2JaJCy0e_703wJ02HhPqB2vL5gnx2xve9ReGgSPQwVp5KCQXMCxrLV6SnKnFtkPOuw56HlDCatoExj_2pC3uDOE1a7zbxRAOvl-4Jp828mhlrcMzWvqwUQqQ-Cwr2c6kb9raCgYKAYkSARASFQG1tDrphPrgjodOOfT7coXEqjr4ng0163",
     refresh_token:
-      "1//0fLo1GZB6mC--CgYIARAAGA8SNwF-L9IrTeuyWAHRWaeWjWNBSvvZbWgVxehwAX7ihqaQ23JgERyXIJoJDp6O6fI3w5BBWMysKQY",
-    expiry_date: 1683208338,
+      "1//0hY582BpLiIoFCgYIARAAGBESNwF-L9Irp3vPRABEQAT7eoIJJCWoxBpt_GkOH7Col7-b8PTTm_w--jIH6JrRdO4e33AB2SlCSQY",
+    expiry_date: 1683230332,
   });
 
   const { credentials } = await auth.refreshAccessToken();
   const { access_token, expiry_date, refresh_token } = credentials;
+
+  auth.setCredentials({
+    access_token,
+    expiry_date,
+    refresh_token,
+  });
 
   return auth;
 }

@@ -36,10 +36,13 @@ export function CalendarStep() {
     });
   }, [selectedDate]);
 
-  async function handleCreateEventInCalendar() {
+  async function handleCreateEventInCalendar(hour: number) {
     await api
-      .get("/users/schedule")
-      .then((response) => {
+      .post("/users/schedule", {
+        date: selectedDate,
+        hour,
+      })
+      .then(() => {
         toast.success("O evento foi criado na sua agenda!");
       })
       .catch((err) => {
@@ -62,7 +65,7 @@ export function CalendarStep() {
                 <TimePickerItem
                   key={hour}
                   disabled={!availability.possibleTimes.includes(hour)}
-                  onClick={handleCreateEventInCalendar}
+                  onClick={() => handleCreateEventInCalendar(hour)}
                 >
                   {String(hour).padStart(2, "0")}:00h
                 </TimePickerItem>
